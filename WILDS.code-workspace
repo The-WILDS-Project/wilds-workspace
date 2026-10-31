@@ -16,6 +16,9 @@
       "path": "../wilds-claude"
     },
     {
+      "path": "../.wilds-vault"
+    },
+    {
       "path": "."
     }
   ],

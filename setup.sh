@@ -21,6 +21,9 @@ for r in "${repos[@]}"; do
   fi
 done
 
+# Credentials folder: shown in the workspace, never committed (it sits outside every repo).
+mkdir -p "$top/.wilds-vault" && chmod 700 "$top/.wilds-vault"
+
 command -v uv >/dev/null || { echo "uv is required: https://docs.astral.sh/uv/" >&2; exit 1; }
 
 cd "$top"

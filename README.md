@@ -33,5 +33,6 @@ WILDS/
   it would shadow the others.
 - **Imports are organised by ruff on save,** using each repo's own `pyproject.toml`
   (`known-first-party = ["wilds"]`).
-- **Credentials stay out of git.** Tokens such as the LDT Confluence one live in
-  `WILDS/.wilds-vault/`, outside every repo — never commit them here.
+- **Credentials stay out of git.** Tokens and passwords (LDT Confluence, the TCS simulator's
+  VNC login) live in `WILDS/.wilds-vault/`, outside every repo — never commit them here.
+  `setup.sh` creates the folder (mode 700) and the workspace shows it, so it is easy to edit.
