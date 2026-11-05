@@ -4,6 +4,9 @@
       "path": "../wilds-control"
     },
     {
+      "path": "../wilds-gui"
+    },
+    {
       "path": "../wilds-bridge"
     },
     {
