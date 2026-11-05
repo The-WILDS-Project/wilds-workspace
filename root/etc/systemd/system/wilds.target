@@ -1,0 +1,6 @@
+[Unit]
+Description=WILDS instrument software
+Wants=wilds-control.service wilds-gui.service
+
+[Install]
+WantedBy=multi-user.target

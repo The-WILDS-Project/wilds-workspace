@@ -35,3 +35,22 @@ WILDS/
   (`known-first-party = ["wilds"]`).
 - **Credentials stay out of git.** Tokens such as the LDT Confluence one live in
   `WILDS/.wilds-vault/`, outside every repo — never commit them here.
+
+## Boot services (Linux, systemd)
+
+`root/` mirrors the target filesystem; `install-services.sh` copies it into place.
+
+| File in `root/` | Purpose |
+|---|---|
+| `etc/systemd/system/wilds.target` | groups the services; enabled at boot |
+| `etc/systemd/system/wilds-control.service` | wilds-control on `:8001` |
+| `etc/systemd/system/wilds-gui.service` | wilds-gui on `:8000`, started after control |
+| `etc/wilds/wilds.env` | shared environment (GUI secret key, control URL) |
+| `usr/lib/sysusers.d/wilds.conf` | the `wilds` service account |
+
+The units expect the setup tree at `/opt/wilds` (the `WILDS/` layout above, owned by `wilds`).
+
+```bash
+sudo ./install-services.sh        # then edit /etc/wilds/wilds.env
+sudo systemctl start wilds.target
+```
