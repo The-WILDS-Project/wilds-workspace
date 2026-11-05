@@ -3,7 +3,7 @@
 # the tree and the tree has been placed at /opt/wilds (owned by the wilds user).
 #
 # Copies root/ over / (never overwriting an existing /etc/wilds/wilds.env), creates the
-# wilds user, and enables wilds.target so the services start at boot. Safe to re-run.
+# wilds user, and enables wilds.service so the services start at boot. Safe to re-run.
 set -euo pipefail
 
 [[ $EUID -eq 0 ]] || { echo "run as root" >&2; exit 1; }
@@ -11,7 +11,7 @@ here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 systemd-sysusers "$here/root/usr/lib/sysusers.d/wilds.conf"
 
-for f in etc/systemd/system/wilds.target etc/systemd/system/wilds-control.service \
+for f in etc/systemd/system/wilds.service etc/systemd/system/wilds-control.service \
          etc/systemd/system/wilds-gui.service; do
   install -D -m 0644 "$here/root/$f" "/$f"
 done
@@ -24,5 +24,5 @@ else
 fi
 
 systemctl daemon-reload
-systemctl enable wilds.target
-echo "Enabled. Start now with: systemctl start wilds.target"
+systemctl enable wilds.service
+echo "Enabled. Start now with: systemctl start wilds.service"

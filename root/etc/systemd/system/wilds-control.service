@@ -2,7 +2,7 @@
 Description=WILDS control (FastAPI/Uvicorn)
 After=network-online.target
 Wants=network-online.target
-PartOf=wilds.target
+PartOf=wilds.service
 
 [Service]
 Type=exec
@@ -13,6 +13,3 @@ EnvironmentFile=-/etc/wilds/wilds.env
 ExecStart=/opt/wilds/.venv/bin/uvicorn --factory wilds.control.app:create_app --host 0.0.0.0 --port 8001
 Restart=on-failure
 RestartSec=5
-
-[Install]
-WantedBy=wilds.target

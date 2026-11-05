@@ -2,7 +2,7 @@
 Description=WILDS GUI (Django/Uvicorn)
 After=network-online.target wilds-control.service
 Wants=network-online.target wilds-control.service
-PartOf=wilds.target
+PartOf=wilds.service
 
 [Service]
 Type=exec
@@ -10,9 +10,7 @@ User=wilds
 Group=wilds
 WorkingDirectory=/opt/wilds/wilds-gui
 EnvironmentFile=-/etc/wilds/wilds.env
+ExecStartPre=/usr/bin/curl -fsS -o /dev/null --retry 30 --retry-connrefused --retry-delay 1 http://localhost:8001/docs
 ExecStart=/opt/wilds/.venv/bin/uvicorn wilds.gui.asgi:application --host 0.0.0.0 --port 8000
 Restart=on-failure
 RestartSec=5
-
-[Install]
-WantedBy=wilds.target

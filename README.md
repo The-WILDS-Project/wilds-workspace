@@ -42,7 +42,7 @@ WILDS/
 
 | File in `root/` | Purpose |
 |---|---|
-| `etc/systemd/system/wilds.target` | groups the services; enabled at boot |
+| `etc/systemd/system/wilds.service` | the one unit to enable and start: brings up control, then the GUI |
 | `etc/systemd/system/wilds-control.service` | wilds-control on `:8001` |
 | `etc/systemd/system/wilds-gui.service` | wilds-gui on `:8000`, started after control |
 | `etc/wilds/wilds.env` | shared environment (GUI secret key, control URL) |
@@ -52,5 +52,5 @@ The units expect the setup tree at `/opt/wilds` (the `WILDS/` layout above, owne
 
 ```bash
 sudo ./install-services.sh        # then edit /etc/wilds/wilds.env
-sudo systemctl start wilds.target
+sudo systemctl start wilds.service
 ```
