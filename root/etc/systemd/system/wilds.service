@@ -1,0 +1,12 @@
+[Unit]
+Description=WILDS instrument software (control backend, then GUI)
+Requires=wilds-control.service wilds-gui.service
+After=wilds-control.service wilds-gui.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+
+[Install]
+WantedBy=multi-user.target
