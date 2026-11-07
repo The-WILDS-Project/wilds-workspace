@@ -46,7 +46,8 @@ WILDS/
 | `etc/systemd/system/wilds-control.service` | wilds-control on `:8001` |
 | `etc/systemd/system/wilds-gui.service` | wilds-gui on `:8000`, started after control |
 | `etc/wilds/wilds.env` | shared environment (GUI secret key, control URL) |
-| `etc/wilds/config.toml` | wilds-control configuration: engineering and TO passphrases, TO presence timeout |
+| `etc/wilds/config.toml` | wilds-control configuration: opmode, TO presence timeout |
+| `etc/wilds/passphrases.toml` | the engineering and TO passphrases, in a file of their own (root-owned, mode 0640) |
 | `usr/lib/sysusers.d/wilds.conf` | the `wilds` service account |
 
 The units expect the setup tree at `/opt/wilds` (the `WILDS/` layout above, owned by `wilds`).
