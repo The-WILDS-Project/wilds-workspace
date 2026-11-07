@@ -1,0 +1,12 @@
+# WILDS configuration, read by wilds-control (re-read when the file changes).
+# Keep this file root-owned and mode 0640 (group wilds): it holds passphrases.
+
+[passphrases]
+# Passphrase for the engineering page (/eng). The default is "physics": change it.
+engineering = "physics"
+# Telescope Operator page (/to). The TO endpoints stay closed until this is set.
+# to = "change-me"
+
+[presence]
+# Seconds without contact before the Telescope Operator counts as offline.
+to_timeout_s = 75

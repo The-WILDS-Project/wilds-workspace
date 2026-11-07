@@ -2,7 +2,7 @@
 # Install the WILDS boot services (Linux, systemd). Run as root, after setup.sh has built
 # the tree and the tree has been placed at /opt/wilds (owned by the wilds user).
 #
-# Copies root/ over / (never overwriting an existing /etc/wilds/wilds.env), creates the
+# Copies root/ over / (never overwriting an existing /etc/wilds/wilds.env or wilds.toml), creates the
 # wilds user, and enables wilds.service so the services start at boot. Safe to re-run.
 set -euo pipefail
 
@@ -21,6 +21,13 @@ if [[ -e /etc/wilds/wilds.env ]]; then
 else
   install -D -m 0640 -o root -g wilds "$here/root/etc/wilds/wilds.env" /etc/wilds/wilds.env
   echo "created  /etc/wilds/wilds.env  (set WILDS_GUI_SECRET_KEY!)"
+fi
+
+if [[ -e /etc/wilds/wilds.toml ]]; then
+  echo "kept     /etc/wilds/wilds.toml"
+else
+  install -D -m 0640 -o root -g wilds "$here/root/etc/wilds/wilds.toml" /etc/wilds/wilds.toml
+  echo "created  /etc/wilds/wilds.toml  (set the passphrases!)"
 fi
 
 systemctl daemon-reload
