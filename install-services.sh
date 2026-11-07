@@ -27,7 +27,14 @@ if [[ -e /etc/wilds/config.toml ]]; then
   echo "kept     /etc/wilds/config.toml"
 else
   install -D -m 0640 -o root -g wilds "$here/root/etc/wilds/config.toml" /etc/wilds/config.toml
-  echo "created  /etc/wilds/config.toml  (set the passphrases!)"
+  echo "created  /etc/wilds/config.toml"
+fi
+
+if [[ -e /etc/wilds/passphrases.toml ]]; then
+  echo "kept     /etc/wilds/passphrases.toml"
+else
+  install -D -m 0640 -o root -g wilds "$here/root/etc/wilds/passphrases.toml" /etc/wilds/passphrases.toml
+  echo "created  /etc/wilds/passphrases.toml  (set the passphrases!)"
 fi
 
 systemctl daemon-reload
