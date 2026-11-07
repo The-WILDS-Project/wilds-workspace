@@ -1,25 +1,25 @@
 {
   "folders": [
     {
-      "path": "../wilds-control"
+      "path": "../control"
     },
     {
-      "path": "../wilds-gui"
+      "path": "../gui"
     },
     {
-      "path": "../wilds-bridge"
+      "path": "../bridge"
     },
     {
-      "path": "../wilds-science-camera"
+      "path": "../science-camera"
     },
     {
-      "path": "../wilds-solving"
+      "path": "../solving"
     },
     {
-      "path": "../wilds-claude"
+      "path": "../claude"
     },
     {
-      "path": "../.wilds-vault"
+      "path": "../.vault"
     },
     {
       "path": "."
