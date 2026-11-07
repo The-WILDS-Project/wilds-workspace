@@ -10,3 +10,7 @@ engineering = "physics"
 [presence]
 # Seconds without contact before the Telescope Operator counts as offline.
 to_timeout_s = 75
+
+[site]
+# "LDT local time" shown in the GUI header. Arizona has no daylight saving, so UTC-7 all year.
+timezone = "America/Phoenix"
