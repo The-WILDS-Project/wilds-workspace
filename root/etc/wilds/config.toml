@@ -1,6 +1,10 @@
 # WILDS configuration, read by wilds-control (re-read when the file changes).
 # Keep this file root-owned and mode 0640 (group wilds): it holds passphrases.
 
+# "production" on a deployed machine. The default, "development", also enables the /dev
+# helpers (a made-up test job), which have no place on the instrument.
+opmode = "production"
+
 [passphrases]
 # Passphrase for the engineering page (/eng). The default is "physics": change it.
 engineering = "physics"
