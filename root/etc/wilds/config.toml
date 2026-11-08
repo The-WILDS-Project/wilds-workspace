@@ -12,3 +12,12 @@ to_timeout_s = 75
 [site]
 # "LDT local time" shown in the GUI header. Arizona has no daylight saving, so UTC-7 all year.
 timezone = "America/Phoenix"
+
+[filing]
+# Data files are written on the local staging disk and delivered to the share by a sweeper, so a
+# share that is down (or not yet mounted) never loses a frame. Read when wilds-control starts.
+staging_root = "/var/lib/wilds/staging"   # local disk; install-services.sh creates it
+share_root = "/lois/data/dct"             # the facility's data folder; wilds-control never creates it
+# Deliver only while share_root is a mount point: an unmounted mount point is an empty local
+# folder, and delivering into it would fill this disk.
+share_is_mount = true
