@@ -37,6 +37,9 @@ else
   echo "created  /etc/wilds/passphrases.toml  (set the passphrases!)"
 fi
 
+# Where wilds-control stages data files before delivering them to the share ([filing] in config.toml).
+install -d -m 0755 -o wilds -g wilds /var/lib/wilds /var/lib/wilds/staging
+
 systemctl daemon-reload
 systemctl enable wilds.service
 echo "Enabled. Start now with: systemctl start wilds.service"
